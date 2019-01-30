@@ -85,6 +85,13 @@ access with terraform.
 
 | openshift_provision_cluster_name | ... |
 
+| openshift_provision_cluster_vars | ... |
+List of cluster vars stored in the configuration map "cluster-vars" in the
+"kube-public" namespace. These include settings dynamically determined during
+installation and which are immediately available with the dynamic inventory
+and fetched from the "cluster-vars" configmap by the openshift-provision
+ansible role.
+
 | openshift_provision_config_path | ... |
 
 | openshift_provision_controller_ansible_port | 22 |
@@ -201,12 +208,6 @@ Name of GCP service account used on nodes.
 
 | openshift_provision_gcp_use_fqdn | false |
 
-| openshift_provision_gcp_zones | varies by region |
-List of availability zones used for the cluster. If `openshift_gcp_multizone`
-is false then this defaults to a list only containing `openshift_gcp_zone`.
-If `openshift_gcp_multizone` is true then this defaults to a dynamic list of
-availability zones within the region given by `openshift_gcp_region`.
-
 | openshift_provision_gpg_pubkey | required for gcp deployment |
 GPG public key to encrypt secrets stored in terraform state.
 
@@ -218,6 +219,9 @@ Key name for GPG generation.
 
 | openshift_provision_gpg_key_passphrase | "redhat" |
 Password for GPG generation.
+
+| openshift_provision_gcp_zones | varies by region |
+List of availability zones used for the cluster.
 
 | openshift_provision_handle_dns_delegation | false |
 Boolean to indicate whether the terraform automation should attempt to

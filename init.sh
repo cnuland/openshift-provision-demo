@@ -12,8 +12,4 @@ errexit () {
 
 [[ -z "$OPENSHIFT_PROVISION_CLUSTER_NAME" ]] && errexit "No OPENSHIFT_PROVISION_CLUSTER_NAME provided."
 
-# FIXME - instead of OPENSHIFT_ROLE_FILTER, it should be exclude scaling/dynamic nodes
-export OPENSHIFT_ROLE_FILTER=master,image
-
-cd provision-cluster
-./ansible-playbook.sh update-node-image.yml $1
+./hosts.py --init
